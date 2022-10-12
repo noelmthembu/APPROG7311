@@ -16,7 +16,7 @@ namespace APPROG7311.Pages.Admin
         public String successMessage = "";
         public void OnGet()
         {
-            String ID =Request.Query["ID"];
+            int id =Convert.ToInt32(Request.Query["ID"]);
 
             try 
             {
@@ -27,7 +27,7 @@ namespace APPROG7311.Pages.Admin
                     String sql_monetray = "SELECT * FROM MONETARY WHERE MON_ID = @ID;";
                     using (SqlCommand command = new SqlCommand(sql_monetray, connection))
                     {
-                        command.Parameters.AddWithValue("@ID", ID);
+                        command.Parameters.AddWithValue("@ID", id);
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             if (reader.Read())
