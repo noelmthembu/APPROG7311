@@ -1,0 +1,68 @@
+﻿@page
+@model APPROG7311.Pages.DisasterModel
+@{
+}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="~/css/StyleSheet.css">
+
+
+<div class="card">
+    <div class="card p-4 mt-5 bg-secondary">
+        <div class="col-12 mb-4">
+            <h2 class="card-title mt-3 text-center"><b>Disaster Donation</b></h2>
+
+        </div>
+        @if (Model.errorMessage.Length > 0)
+        {
+            <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+                <strong>@Model.errorMessage</strong>
+                <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>
+        }
+
+        <form method="post" class="form-group">
+            <!-- Description-->
+            <div class="form-group my-1 col-sm-5">
+                <label class="mr-sm-2" for="Description">Description</label>
+                <textarea class="form-control text-center" rows="3" placeholder="Enter your Description" value="" name="DESCRIPTION"></textarea>
+            </div>
+            <div class="form-group my-1 col-sm-5">
+                <label class="mr-sm-2" for="Location">Disaster Name</label>
+                <input type="text" class="form-control text-center" rows="3" placeholder="Enter a Disaster Name" value="" name="DISASTER_NAME">
+            </div>
+            <div class="form-group my-1 col-sm-3">
+                <label class="mr-sm-2" for="Start Date">Start Date</label>
+                <input type="date" value="" name="START_DATE" class="form-control" placeholder="Start Date">
+            </div>
+
+            <div class="form-group my-1 col-sm-3">
+                <label class="mr-sm-2" for="End Date">End Date</label>
+                <input type="date" value="" name="END_DATE" class="form-control" placeholder="End Date">
+            </div>
+
+            <div class="col-sm-3 my-1">
+                <label class="mr-sm-2" for="inlineFormCustomSelect">Aid Type</label>
+                <select class="custom-select mr-sm-2" id="AID_TYPE" name="AID_TYPE">
+                    <option value="Water Provision">Water Provision</option>
+                    <option value="Clothing">Clothing</option>
+                    <option value="Food">Food</option>
+                    <option value="Medical">Medical</option>
+                </select>
+            </div>
+
+            <div class="form-group my-1 col-sm-5">
+                <label class="mr-sm-2" for="Location">Location</label>
+                <textarea class="form-control text-center" rows="3" placeholder="Enter your Location" value="" name="LOCATION"></textarea>
+            </div>
+            <div class="col-12 mt-4">
+                <a class="btn btn-secondary text-uppercase" asp-page="/Donate">Back</a>
+                <button class="btn btn-primary text-uppercase" value="Submit">Submit</button>
+            </div>
+        </form>
+
+
+    </div>
+
+</div>

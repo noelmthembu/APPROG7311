@@ -1,0 +1,74 @@
+﻿@page
+@model APPROG7311.Pages.GoodsModel
+@{
+}
+<link href="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="~/css/StyleSheet.css">
+
+
+<div class="card">
+    <div class="card-body p-4 mt-5 bg-secondary">
+        <h2 class="card-title mt-3 text-center"><b>Goods Donation</b></h2>
+
+        @if (Model.errorMessage.Length > 0)
+        {
+            <div class='alert alert-warning alert-dismissible fade show' role='alert'>
+                <strong>@Model.errorMessage</strong>
+                <button type='button' class='btn-close' data-bs-dismiss='alert' aria-label='Close'></button>
+            </div>
+        }
+
+        <!-- Default form contact -->
+    <form method="post" class="form-group">
+
+        <!-- Anoymous -->
+        <div class="col-sm-3 my-1">
+            <label class="mr-sm-2" for="inlineFormCustomSelect">Identity</label>
+            <select class="custom-select mr-sm-2" id="IS_CHECKED" name="IS_CHECKED">
+                <option selected>Choose...</option>
+                <option value="Known">Known</option>
+                <option value="Anonymous">Anonymous</option>
+
+            </select>
+        </div>
+        <!-- Description-->
+        <div class="form-group my-1 col-sm-5">
+            <label class="mr-sm-2" for="Description">Description</label>
+            <textarea class="form-control" rows="3" placeholder="Enter your Description" value="@Model.goodsInfo.DESCRIPTION" name="DESCRIPTION"></textarea>
+        </div>
+        <!-- Start Date -->
+        <div class="form-group my-1 col-sm-3">
+            <label class="mr-sm-2" for="Start Date">Start Date</label>
+            <input type="date" class="form-control text-center" value="@Model.goodsInfo.START_DATE" name="START_DATE" placeholder="Date">
+        </div>
+        <!-- Category -->
+        <div class="col-sm-3 my-1">
+            <label class="mr-sm-2" for="inlineFormCustomSelect">Category</label>
+            <select class="custom-select mr-sm-2" id="CATEGORY" name="CATEGORY">
+                <option value="Non-perishedable Food">Non-perishedable Food</option>
+                <option value="Clothing">Clothing</option>
+            </select>
+        </div>
+        <!-- Start Date -->
+        <div class="form-group my-1 col-sm-3">
+            <label class="mr-sm-2" for="New Category">New Category</label>
+            <input type="text" class="form-control" value="@Model.goodsInfo.NEW_CATEGORY" name="NEW_CATEGORY" placeholder="New Category">
+        </div>
+        <!-- Number of Items -->
+        <div class="form-group col-sm-3 my-1">
+            <label class="mr-sm-2" for="Number of Items">Number of Items</label>
+            <input type="number" class="form-control text-center" value="@Model.goodsInfo.NUM_OF_ITEMS" name="NUM_OF_ITEMS" placeholder="Items">
+        </div>
+        <div class="col-12 mt-4">
+            <a class="btn btn-secondary text-uppercase" asp-page="/Donate">Back</a>
+            <button class="btn btn-primary text-uppercase" value="Submit">Submit</button>
+        </div>
+
+    </form>
+        <!-- Default form contact -->
+
+
+    </div>
+</div>
