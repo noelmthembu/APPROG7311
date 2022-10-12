@@ -16,7 +16,7 @@ namespace APPROG7311.Pages.Admin
         public String successMessage = "";
         public void OnGet()
         {
-            int id =Convert.ToInt32(Request.Query["ID"]);
+            String ID = Request.Query["ID"];
 
             try 
             {
@@ -27,7 +27,7 @@ namespace APPROG7311.Pages.Admin
                     String sql_monetray = "SELECT * FROM MONETARY WHERE MON_ID = @ID;";
                     using (SqlCommand command = new SqlCommand(sql_monetray, connection))
                     {
-                        command.Parameters.AddWithValue("@ID", id);
+                        command.Parameters.AddWithValue("@ID", ID);
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             if (reader.Read())
@@ -51,13 +51,13 @@ namespace APPROG7311.Pages.Admin
         }
         public void OnPost()
         {
-            monetrayInfo.ID =  Request.Form["ID"];
+            monetrayInfo.ID = Request.Form["ID"];
             monetrayInfo.IS_CHECKED = Request.Form["IS_CHECKED"];
             monetrayInfo.AMOUNT = Convert.ToDouble(Request.Form["AMOUNT"]);
             monetrayInfo.START_DATE = Request.Form["START_DATE"];
             monetrayInfo.END_DATE = Request.Form["END_DATE"];
 
-            try 
+            try
             {
                 String connectionString = "Server=tcp:disaster-alleviation-foundation.database.windows.net,1433;Initial Catalog=Disaster_Alleviation_Foundation_DB;Persist Security Info=False;User ID=dafadmin;Password=P@ssw0rd;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
                 using (SqlConnection connection = new SqlConnection(connectionString))
