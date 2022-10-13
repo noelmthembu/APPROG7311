@@ -24,7 +24,7 @@ namespace APPROG7311.Pages.Admin
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    String sql_monetray = "SELECT * FROM MONETARY WHERE MON_ID = @ID;";
+                    String sql_monetray = "SELECT * FROM MONETRAY WHERE MON_ID = @ID;";
                     using (SqlCommand command = new SqlCommand(sql_monetray, connection))
                     {
                         command.Parameters.AddWithValue("@ID", ID);
@@ -37,7 +37,7 @@ namespace APPROG7311.Pages.Admin
                                 monetrayInfo.IS_CHECKED = reader.GetString(1);
                                 monetrayInfo.AMOUNT = reader.GetDouble(2);
                                 monetrayInfo.START_DATE = reader.GetString(3);
-                                monetrayInfo.END_DATE = reader.GetString(4);
+
                             }
                         }
                     }
@@ -55,7 +55,7 @@ namespace APPROG7311.Pages.Admin
             monetrayInfo.IS_CHECKED = Request.Form["IS_CHECKED"];
             monetrayInfo.AMOUNT = Convert.ToDouble(Request.Form["AMOUNT"]);
             monetrayInfo.START_DATE = Request.Form["START_DATE"];
-            monetrayInfo.END_DATE = Request.Form["END_DATE"];
+
 
             try
             {
@@ -63,15 +63,14 @@ namespace APPROG7311.Pages.Admin
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    String sql = "UPDATE MONETARY " +
-                                 "SET IS_CHECKED = @IS_CHECKED, AMOUNT = @AMOUNT, START_DATE = @START_DATE, END_DATE = @END_DATE" +
+                    String sql = "UPDATE MONETRAY " +
+                                 "SET IS_CHECKED = @IS_CHECKED, AMOUNT = @AMOUNT, START_DATE = @START_DATE;" +
                                  " WHERE MON_ID = @ID";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         command.Parameters.AddWithValue("@IS_CHECKED", monetrayInfo.IS_CHECKED);
                         command.Parameters.AddWithValue("@AMOUNT", monetrayInfo.AMOUNT);
                         command.Parameters.AddWithValue("@START_DATE", monetrayInfo.START_DATE);
-                        command.Parameters.AddWithValue("@END_DATE", monetrayInfo.END_DATE);
                         command.Parameters.AddWithValue("@ID", monetrayInfo.ID);
                         command.ExecuteNonQuery();
 
