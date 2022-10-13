@@ -85,16 +85,16 @@ namespace APPROG7311.Pages.Admin
 
             try
             {
-                String connectionString = "Data Source=disaster-alleviation-foundation.database.windows.net;Initial Catalog=Disaster_Alleviation_Foundation_DB;User ID=dafadmin;Password=P@ssw0rd;Connect Timeout=60;Encrypt=True;TrustServerCertificate=False;ApplicationIntent=ReadWrite;MultiSubnetFailover=False";
+                String connectionString = "Server=tcp:disaster-alleviation-foundation.database.windows.net,1433;Initial Catalog=Disaster_Alleviation_Foundation_DB;Persist Security Info=False;User ID=dafadmin;Password=P@ssw0rd;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;";
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
                     String sql = "INSERT INTO ALLOCATIONS VALUES(@ALL_GOODS, @ALL_AMOUNT, @ACTIVE_DISASTER)";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
-                        command.Parameters.AddWithValue("@ALL_GOODS", monetrayInfo.IS_CHECKED);
-                        command.Parameters.AddWithValue("@ALL_AMOUNT", monetrayInfo.AMOUNT);
-                        command.Parameters.AddWithValue("@ACTIVE_DISASTER", monetrayInfo.START_DATE);
+                        command.Parameters.AddWithValue("@ALL_GOODS", paymentInfo.ALL_GOODS);
+                        command.Parameters.AddWithValue("@ALL_AMOUNT", paymentInfo.ALL_AMOUNT);
+                        command.Parameters.AddWithValue("@ACTIVE_DISASTER", paymentInfo.ACTIVE_DISASTER);
                         command.ExecuteNonQuery();
 
                     }
@@ -105,10 +105,7 @@ namespace APPROG7311.Pages.Admin
                 errorMessage = ex.Message;
                 return;
             }
-            paymentInfo.ALL_AMOUNT = 0;
-            paymentInfo.ACTIVE_DISASTER = "";
-            paymentInfo.ALL_GOODS = "";
-
+   
             successMessage = "Added Successfully!";
 
         }

@@ -19,7 +19,7 @@
                     <!-- Credit card form content -->
                     <div class="tab-content">
                         <!-- credit card info-->
-                        <form method="post" role="form" onsubmit="event.preventDefault()">
+                        <form method="post" >
                             <div class="form-group my-1 col-sm-5">
                                 <label class="mr-sm-2" for="Location">Goods</label>
                                 <select class="custom-select mr-sm-2" id="Active Disaster" name="ALL_GOODS">
@@ -27,25 +27,24 @@
                                     {
                                         <option value="@item.CATEGORY">@item.CATEGORY</option>
                                         <option value="@item.NEW_CATEGORY">@item.NEW_CATEGORY</option>
-
                                     }
-                                </select> 
+                                </select>
                             </div>
 
                             <div class="form-group my-1  col-sm-12">
                                 <label class="mr-sm-2" for="Amount To Donate">Amount To Donate</label>
-                                <select class="custom-select mr-sm-2" id="Active Disaster" name="ALL_AMOUNT">
-                                    @foreach (var item in Model.listmon)
-                                    {
-                                        <option value="@item.AMOUNT">@item.AMOUNT</option>
-                                    }
-                                </select> 
+                                <select class="custom-select mr-sm-2" id="Active Disaster" name="ALL_AMOUNT" >
+                                @foreach (var item in Model.listmon)
+                                {
+                                    <option value="@item.AMOUNT">@item.AMOUNT</option>
+                                }
+                                </select>
                             </div>
 
                             <div class="col-sm-12 my-1">
                                 <label class="mr-sm-2" for="inlineFormCustomSelect">Active Disaster</label>
 
-                                <select class="custom-select mr-sm-2" id="Active Disaster" name="ACTIVE_DISASTER">
+                                <select class="custom-select mr-sm-2" id="Active Disaster" name="ACTIVE_DISASTER" >
                                     @foreach (var item in Model.listdis)
                                     {
                                         <option value="@item.DISASTER_NAME">@item.DISASTER_NAME</option>
@@ -54,7 +53,7 @@
 
                             </div>
                             <div class="form-group">
-                                <button class="button btn-block" value="Submit"> Allocate  </button>
+                                <button class="subscribe btn btn-primary btn-block shadow-sm" value="Submit"> Allocate  </button>
                             </div>
                         </form>
 
