@@ -1,0 +1,67 @@
+﻿@page
+@model APPROG7311.Pages.Admin.AllocationModel
+@{
+}
+<div class="container py-5">
+    <!-- For demo purpose -->
+    <div class="row mb-4">
+    </div> <!-- End -->
+    <div class="row">
+        <div class="col-lg-6 mx-auto">
+            <div class="card ">
+                <div class="card-header">
+                    <div class="bg-white shadow-sm pt-4 pl-2 pr-2 pb-2">
+                        <!-- Credit card form tabs -->
+                        <div class="col-lg-8 mx-auto text-center">
+                            <h2 class="card-title mt-3"><b>Payments</b></h2>
+                        </div>
+                    </div> <!-- End -->
+                    <!-- Credit card form content -->
+                    <div class="tab-content">
+                        <!-- credit card info-->
+                        <form method="post" role="form" onsubmit="event.preventDefault()">
+                            <div class="form-group my-1 col-sm-5">
+                                <label class="mr-sm-2" for="Location">Goods</label>
+                                <select class="custom-select mr-sm-2" id="Active Disaster" name="CATEGORY">
+                                    @foreach (var item in Model.listgoo)
+                                    {
+                                        <option value="@item.CATEGORY">@item.CATEGORY</option>
+                                        <option value="@item.NEW_CATEGORY">@item.NEW_CATEGORY</option>
+
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="form-group my-1  col-sm-12">
+                                <label class="mr-sm-2" for="Amount To Donate">Amount To Donate</label>
+                                <select class="custom-select mr-sm-2" id="Active Disaster" name="AMOUNT">
+                                    @foreach (var item in Model.listmon)
+                                    {
+                                        <option value="@item.AMOUNT">@item.AMOUNT</option>
+                                    }
+                                </select>
+                            </div>
+
+                            <div class="col-sm-12 my-1">
+                                <label class="mr-sm-2" for="inlineFormCustomSelect">Active Disaster</label>
+
+                                <select class="custom-select mr-sm-2" id="Active Disaster" name="ACTIVE_DISASTER">
+                                    @foreach (var item in Model.listdis)
+                                    {
+                                        <option value="@item.DISASTER_NAME">@item.DISASTER_NAME</option>
+                                    }
+                                </select>
+
+                            </div>
+                            <div class="card-footer">
+                                <button type="button" value="Submit" class="subscribe btn btn-primary btn-block shadow-sm"> Confirm Payment </button>
+                            </div>
+                        </form>
+
+                    </div> <!-- End -->
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
