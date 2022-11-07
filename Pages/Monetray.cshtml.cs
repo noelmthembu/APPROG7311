@@ -55,7 +55,7 @@ namespace APPROG7311.Pages
         }
         public class MonetrayInfo
         {
-            public String ID;
+            public String id;
             public String IS_CHECKED;
             public Double AMOUNT;
             public String START_DATE;

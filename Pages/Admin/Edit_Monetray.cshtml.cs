@@ -16,7 +16,7 @@ namespace APPROG7311.Pages.Admin
         public String successMessage = "";
         public void OnGet()
         {
-            String ID = Request.Query["ID"];
+            String ID = Request.Query["id"];
 
             try 
             {
@@ -24,10 +24,10 @@ namespace APPROG7311.Pages.Admin
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    String sql_monetray = "SELECT * FROM MONETRAY WHERE MON_ID = @ID;";
+                    String sql_monetray = "SELECT * FROM MONETRAY WHERE MON_ID = @id;";
                     using (SqlCommand command = new SqlCommand(sql_monetray, connection))
                     {
-                        command.Parameters.AddWithValue("@ID", ID);
+                        command.Parameters.AddWithValue("@id", ID);
                         using (SqlDataReader reader = command.ExecuteReader())
                         {
                             if (reader.Read())
@@ -51,7 +51,7 @@ namespace APPROG7311.Pages.Admin
         }
         public void OnPost()
         {
-            monetrayInfo.ID = Request.Form["ID"];
+            monetrayInfo.ID = Request.Form["id"];
             monetrayInfo.IS_CHECKED = Request.Form["IS_CHECKED"];
             monetrayInfo.AMOUNT = Convert.ToDouble(Request.Form["AMOUNT"]);
             monetrayInfo.START_DATE = Request.Form["START_DATE"];
@@ -63,15 +63,13 @@ namespace APPROG7311.Pages.Admin
                 using (SqlConnection connection = new SqlConnection(connectionString))
                 {
                     connection.Open();
-                    String sql = "UPDATE MONETRAY " +
-                                 "SET IS_CHECKED = @IS_CHECKED, AMOUNT = @AMOUNT, START_DATE = @START_DATE;" +
-                                 " WHERE MON_ID = @ID";
+                    String sql = "UPDATE MONETRAY SET IS_CHECKED = @IS_CHECKED, AMOUNT = @AMOUNT, START_DATE = @START_DATE WHERE MON_ID = @id";
                     using (SqlCommand command = new SqlCommand(sql, connection))
                     {
                         command.Parameters.AddWithValue("@IS_CHECKED", monetrayInfo.IS_CHECKED);
                         command.Parameters.AddWithValue("@AMOUNT", monetrayInfo.AMOUNT);
                         command.Parameters.AddWithValue("@START_DATE", monetrayInfo.START_DATE);
-                        command.Parameters.AddWithValue("@ID", monetrayInfo.ID);
+                        command.Parameters.AddWithValue("@id", monetrayInfo.ID);
                         command.ExecuteNonQuery();
 
                     }

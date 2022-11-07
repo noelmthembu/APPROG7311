@@ -38,7 +38,7 @@ namespace APPROG7311.Pages
                             while (reader.Read())
                             {
 
-                                monetrayInfo.ID = "" + reader.GetInt32(0);
+                                monetrayInfo.id = "" + reader.GetInt32(0);
                                 monetrayInfo.IS_CHECKED = reader.GetString(1);
                                 monetrayInfo.AMOUNT = reader.GetDouble(2);
                                 monetrayInfo.START_DATE = reader.GetString(3);
