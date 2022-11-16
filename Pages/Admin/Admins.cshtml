@@ -15,7 +15,7 @@
 <body>
     <!--Nav Bar Start-->
     <div class="container">
-        <!--List of all books-->
+        <!--List of all Monetray-->
         <h4 class="mt-5">All Monetary Donations</h4>
         <table class="table table-bordered shadow">
             <thead>
@@ -24,7 +24,6 @@
                     <th>STATUS</th>
                     <th>AMOUNT</th>
                     <th>START DATE</th>
-                    <th>END DATE</th>
                     <th>ACTION</th>
                 </tr>
             </thead>
@@ -32,19 +31,120 @@
                 @foreach (var item in Model.listmon)
                 {
                     <tr>
-                        <td>@item.ID</td>
+                        <td>@item.id</td>
                         <td>@item.IS_CHECKED</td>
                         <td>@item.AMOUNT</td>
                         <td>@item.START_DATE</td>
-                        <td>@item.END_DATE</td>
                         <td>
-                            <a class="btn btn-warning" href="/Admin/Edit_Monetray?ID=">Edit</a>
+                            <a class="btn btn-warning" href="/Admin/Edit_Monetray?id=">Edit</a>
                             <a class="btn btn-danger" href="/Admin/Delete_Monetray?ID=">Delete</a>
                         </td>
                     </tr>
 
                 }
 
+            </tbody>
+        </table>
+        <!--List of all Goods-->
+        <h4 class="mt-5">All Goods Donations</h4>
+        <table class="table table-bordered shadow">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>STATUS</th>
+                    <th>START DATE</th>
+                    <th>NUMBER OF ITEMS</th>
+                    <th>CATEGORY</th>
+                    <th>NEW CATEGORY</th>
+                    <th>DESCRIPTION</th>
+                    <th>ACTION</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.listgoo)
+                {
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.IS_CHECKED</td>
+                        <td>@item.START_DATE</td>
+                        <td>@item.NUM_OF_ITEMS</td>
+                        <td>@item.CATEGORY</td>
+                        <td>@item.NEW_CATEGORY</td>
+                        <td>@item.DESCRIPTION</td>
+                        <td>
+                            <a href="#" class="btn btn-warning" href="/Admin/Edit_Monetray?ID=">Edit</a>
+                            <a href="#" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <!--List of all Disaster-->
+        <h4 class="mt-5">All Disaster Donations</h4>
+        <table class="table table-bordered shadow">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>DESCRIPTION</th>
+                    <th>DISASTER NAME</th>
+                    <th>START DATE</th>
+                    <th>END DATE</th>
+                    <th>AID TYPE</th>
+                    <th>LOCATION</th>
+                    <th>ACTION</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.listdis)
+                {
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.DESCRIPTION</td>
+                        <th>@item.DISASTER_NAME</th>
+                        <td>@item.START_DATE</td>
+                        <td>@item.END_DATE</td>
+                        <td>@item.AID_TYPE</td>
+                        <td>@item.LOCATION</td>
+                        <td>
+                            <a href="#" class="btn btn-warning">Edit</a>
+                            <a href="#" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <!--List of all Allocations-->
+        <h4 class="mt-5">All Allocations</h4>
+        <table class="table table-bordered shadow">
+            <thead>
+                <tr>
+                    <th>#</th>
+                    <th>STATUS</th>
+                    <th>START DATE</th>
+                    <th>NUMBER OF ITEMS</th>
+                    <th>CATEGORY</th>
+                    <th>NEW CATEGORY</th>
+                    <th>DESCRIPTION</th>
+                    <th>ACTION</th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model.listgoo)
+                {
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.IS_CHECKED</td>
+                        <td>@item.START_DATE</td>
+                        <td>@item.NUM_OF_ITEMS</td>
+                        <td>@item.CATEGORY</td>
+                        <td>@item.NEW_CATEGORY</td>
+                        <td>@item.DESCRIPTION</td>
+                        <td>
+                            <a href="#" class="btn btn-warning" href="/Admin/Edit_Monetray?ID=">Edit</a>
+                            <a href="#" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
+                }
             </tbody>
         </table>
         <!--List of all books-->
@@ -65,53 +165,19 @@
             <tbody>
                 @foreach (var item in Model.listgoo)
                 {
-                <tr>
-                    <td>@item.ID</td>
-                    <td>@item.IS_CHECKED</td>
-                    <td>@item.START_DATE</td>
-                    <td>@item.NUM_OF_ITEMS</td>
-                    <td>@item.CATEGORY</td>
-                    <td>@item.NEW_CATEGORY</td>
-                    <td>@item.DESCRIPTION</td>
-                    <td>
-                        <a href="#" class="btn btn-warning"  href="/Admin/Edit_Monetray?ID=">Edit</a>
-                        <a href="#" class="btn btn-danger">Delete</a>
-                    </td>
-                </tr>
-                }
-            </tbody>
-        </table>
-        <!--List of all authors-->
-        <h4 class="mt-5">All Disaster Donations</h4>
-        <table class="table table-bordered shadow">
-            <thead>
-                <tr>
-                    <th>#</th>
-                    <th>DESCRIPTION</th>
-                    <th>DISASTER NAME</th>
-                    <th>START DATE</th>
-                    <th>END DATE</th>
-                    <th>AID TYPE</th>
-                    <th>LOCATION</th>
-                    <th>ACTION</th>
-                </tr>
-            </thead>
-            <tbody>
-                @foreach (var item in Model.listdis)
-                {
-                <tr>
-                    <td>@item.ID</td>
-                    <td>@item.DESCRIPTION</td>
-                    <th>@item.DISASTER_NAME</th>
-                    <td>@item.START_DATE</td>
-                    <td>@item.END_DATE</td>
-                    <td>@item.AID_TYPE</td>
-                    <td>@item.LOCATION</td>
-                    <td>
-                        <a href="#" class="btn btn-warning">Edit</a>
-                        <a href="#" class="btn btn-danger">Delete</a>
-                    </td>
-                </tr>
+                    <tr>
+                        <td>@item.ID</td>
+                        <td>@item.IS_CHECKED</td>
+                        <td>@item.START_DATE</td>
+                        <td>@item.NUM_OF_ITEMS</td>
+                        <td>@item.CATEGORY</td>
+                        <td>@item.NEW_CATEGORY</td>
+                        <td>@item.DESCRIPTION</td>
+                        <td>
+                            <a href="#" class="btn btn-warning" href="/Admin/Edit_Monetray?ID=">Edit</a>
+                            <a href="#" class="btn btn-danger">Delete</a>
+                        </td>
+                    </tr>
                 }
             </tbody>
         </table>
